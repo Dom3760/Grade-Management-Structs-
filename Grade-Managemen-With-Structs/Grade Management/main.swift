@@ -41,7 +41,7 @@ func startScreen()
                     print("Error converting grade to integer for \(studentNames), Grade \(i)")
                 }
             }
-            let finalGrade = calcGrade(studentGrades: student.grades)
+            let finalGrade = calcGrade(studentGrades: studentGrades)
             let student = person(StudentName: studentNames, studentGrades: studentGrades, studentFinalGrade: finalGrade)
             students.append(student)
         }
@@ -107,22 +107,16 @@ func startScreen()
     }
 }
 
-func calcGrade(studentGrades: [Int]) -> [Int]
+func calcGrade(studentGrades: [Int]) -> Double
 {
-    var grades2: [Int] = []
-    var current2 = 0
+    var current2: Int = 0
     
-    for i in grade.indices
+    for j in studentGrades
     {
-        for j in grade[i].indices
-        {
-            current2 += grade[i][j]
-        }
-        current2 /= grade[i].count
-        grades2.append(current2)
-        current2 = 0
+        current2 += j
     }
-    return (grades2)
+    var average = Double(current2) / Double(studentGrades.count)
+    return (average)
 }
 
 func singleStudentsGrade() {
