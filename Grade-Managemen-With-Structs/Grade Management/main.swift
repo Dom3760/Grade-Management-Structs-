@@ -42,7 +42,7 @@ func startScreen()
                 }
             }
             let finalGrade = calcGrade(studentGrades: studentGrades)
-            let student = person(StudentName: studentNames, studentGrades: studentGrades, studentFinalGrade: finalGrade)
+            let student = person(StudentName: studentNames, studentGrades: studentGrades, studentFinalGrade: Int(finalGrade))
             students.append(student)
         }
     } catch {
@@ -122,12 +122,12 @@ func calcGrade(studentGrades: [Int]) -> Double
 func singleStudentsGrade() {
     print("Enter the name of the student:")
     if let inputName = readLine() {
-        for i in studentNames.indices
+        for i in students.indices
         {
-            if inputName.lowercased() == studentNames[i].lowercased()
+            if inputName.lowercased() == students[i].StudentName
             {
                 print("\(inputName) found")
-                print("\(inputName)'s grade is: \(calcGrade()[i])")
+                print("\(inputName)'s grade is: \(calcGrade(studentGrades: [])[i])")
             }
         }
         sleep(2)
@@ -276,7 +276,7 @@ func filter() {
         filter()
     }
 
-    for i in studentNames.indices 
+    for i in studentNames.indices
     {
         let averageGrade = calcGrade()[i]
         if averageGrade > lowRange && averageGrade < highRange 
